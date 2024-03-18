@@ -34,5 +34,13 @@ export class PostsComponent {
           console.log(response);
         })
     }
+    deletePost(postToDelete: any){
+      this.httpClient.delete(this.url + '/' + postToDelete.id)
+        .subscribe(response =>{
+          let index = this.posts.indexOf(postToDelete);
+          this.posts.splice(index, 1);
+        })
+
+    }
 
 }
