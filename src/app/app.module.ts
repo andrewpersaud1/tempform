@@ -9,6 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { PostsComponent } from './posts/posts.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { PostService } from './services/post.service';
+import { AppErrorHandler } from './common/app-error-handler';
+import { ErrorHandler } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    PostService,
+    {provide: ErrorHandler, useClass: ErrorHandler}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
